@@ -6,6 +6,7 @@ using UnityEngine.Video;
 public class VideoScreen : MonoBehaviour
 {
     public VideoClip[] videos;
+    public GameObject choiceVideoMenu;
     VideoPlayer videoPlayer;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,12 @@ public class VideoScreen : MonoBehaviour
     {
         if (StarterAssets.StarterAssetsInputs.hasRemote)
         {
-            videoPlayer.clip = videos[0];
+            choiceVideoMenu.SetActive(true);
+            Cursor.visible = true;
         }
+    }
+    public void ChoiceVideo(int id)
+    {
+        videoPlayer.clip = videos[id];
     }
 }
