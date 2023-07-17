@@ -20,8 +20,18 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		[Header("Modifiers")]
+		public float distanceInteraction = 5;
+		Transform cam;
+
+		public static bool hasRemote;
+
+        private void Awake()
+        {
+			cam = Camera.main.transform;
+        }
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-		public void OnMove(InputValue value)
+        public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}
@@ -42,6 +52,14 @@ namespace StarterAssets
 		public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
+		}
+		public void OnInteraction(InputValue value)
+		{
+			RaycastHit hit;
+			if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distanceInteraction))
+			{
+				hit.collider.SendMessage("Interaction", SendMessageOptions.DontRequireReceiver);
+			}
 		}
 #endif
 
@@ -65,6 +83,10 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
+		public void InteractionInput()
+        {
+
+        }
 		
 		private void OnApplicationFocus(bool hasFocus)
 		{

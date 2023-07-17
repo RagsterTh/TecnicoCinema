@@ -17,6 +17,7 @@ public class CollectableObject : MonoBehaviour
     }
     void Interaction()
     {
+        StarterAssets.StarterAssetsInputs.hasRemote = true;
         gameObject.SetActive(false);
     }
 }

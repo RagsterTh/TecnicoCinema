@@ -123,12 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &63316055 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4135013735270702863, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
-    type: 3}
-  m_PrefabInstance: {fileID: 1112383252}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &611574193
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +353,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: 3a70b77d-1c7e-4f47-a630-faaa5a866ca8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: Player/Raycast[/Mouse/leftButton]
+      objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_RootOrder
@@ -422,19 +431,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1112383252}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1112383254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63316055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60b1aa9a6cdeffe4c8efe46dbe82bb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanceInteraction: 5
 --- !u!1001 &1306186595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -601,6 +597,7 @@ GameObject:
   - component: {fileID: 1965376157}
   - component: {fileID: 1965376156}
   - component: {fileID: 1965376155}
+  - component: {fileID: 1965376160}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -722,6 +719,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1965376160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965376154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01cfe267e695a9741a6558b01c6958e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videos:
+  - {fileID: 32900000, guid: 3f4c192400cc8c343bd41cb86cfc8d23, type: 3}
 --- !u!4 &4725567245232153051
 Transform:
   m_ObjectHideFlags: 0
