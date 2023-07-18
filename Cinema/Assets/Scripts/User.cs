@@ -9,6 +9,7 @@ public class User : MonoBehaviour
     public static bool hasController;
     Transform cam;
     RaycastHit hit;
+    Image lastChannel;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,7 +22,12 @@ public class User : MonoBehaviour
         Physics.Raycast(cam.transform.position, cam.transform.forward, out hit);
         if (remoteController.activeSelf && hit.collider.CompareTag("Channel"))
         {
-            hit.collider.GetComponent<Image>().color = Color.blue;
+            if (lastChannel)
+            {
+                lastChannel.color = Color.white;
+            }
+            lastChannel = hit.collider.GetComponent<Image>();
+            lastChannel.color = Color.blue;
         }
     }
     public void Interaction()

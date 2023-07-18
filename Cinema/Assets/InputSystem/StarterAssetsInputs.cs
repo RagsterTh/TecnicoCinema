@@ -47,6 +47,11 @@ namespace StarterAssets
 		{
 			user.Interaction();
 		}
+		public void OnQuit(InputValue value)
+		{
+			print("Saiu");
+			Application.Quit();
+		}
 #endif
 
 

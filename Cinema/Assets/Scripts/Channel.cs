@@ -17,8 +17,11 @@ public class Channel : MonoBehaviour
     {
         
     }
-    void Interaction()
+    void Interaction(bool remoteActive)
     {
-        screen.ChoiceVideo(videoID);
+        if (remoteActive)
+        {
+            screen.ChoiceVideo(videoID);
+        }
     }
 }
