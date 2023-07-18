@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectableObject : MonoBehaviour
+public class Channel : MonoBehaviour
 {
+    VideoScreen screen;
+    public int videoID;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        screen = GetComponentInParent<VideoScreen>();
     }
 
     // Update is called once per frame
@@ -17,7 +19,6 @@ public class CollectableObject : MonoBehaviour
     }
     void Interaction()
     {
-        StarterAssets.StarterAssetsInputs.hasRemote = true;
-        gameObject.SetActive(false);
+        screen.ChoiceVideo(videoID);
     }
 }

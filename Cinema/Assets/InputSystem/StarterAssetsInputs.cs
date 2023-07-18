@@ -8,10 +8,7 @@ namespace StarterAssets
 	public class StarterAssetsInputs : MonoBehaviour
 	{
 		[Header("Character Input Values")]
-		public Vector2 move;
 		public Vector2 look;
-		public bool jump;
-		public bool sprint;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -20,16 +17,14 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
-		[Header("Modifiers")]
-		public float distanceInteraction = 5;
-		Transform cam;
+		User user;
 
-		public static bool hasRemote;
 
         private void Awake()
         {
-			cam = Camera.main.transform;
+			user = GetComponent<User>();
         }
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         public void OnMove(InputValue value)
 		{
@@ -44,44 +39,25 @@ namespace StarterAssets
 			}
 		}
 
-		public void OnJump(InputValue value)
+		public void OnControllerActive()
 		{
-			//JumpInput(value.isPressed);
-		}
-
-		public void OnSprint(InputValue value)
-		{
-			//SprintInput(value.isPressed);
+			ControllerActiveInput();
 		}
 		public void OnInteraction(InputValue value)
 		{
-			RaycastHit hit;
-			if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, distanceInteraction))
-			{
-				hit.collider.SendMessage("Interaction", SendMessageOptions.DontRequireReceiver);
-			}
+			user.Interaction();
 		}
 #endif
 
-
-		public void MoveInput(Vector2 newMoveDirection)
-		{
-			move = newMoveDirection;
-		} 
 
 		public void LookInput(Vector2 newLookDirection)
 		{
 			look = newLookDirection;
 		}
 
-		public void JumpInput(bool newJumpState)
+		public void ControllerActiveInput()
 		{
-			jump = newJumpState;
-		}
-
-		public void SprintInput(bool newSprintState)
-		{
-			sprint = newSprintState;
+			user.remoteController.SetActive(!user.remoteController.activeInHierarchy);
 		}
 		
 		private void OnApplicationFocus(bool hasFocus)

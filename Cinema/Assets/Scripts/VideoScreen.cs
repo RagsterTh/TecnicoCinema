@@ -6,12 +6,16 @@ using UnityEngine.Video;
 public class VideoScreen : MonoBehaviour
 {
     public VideoClip[] videos;
+    public Material screenOff, screenOn;
     public GameObject choiceVideoMenu;
+
+    MeshRenderer meshR;
     VideoPlayer videoPlayer;
     // Start is called before the first frame update
     void Start()
     {
         videoPlayer = GetComponent<VideoPlayer>();
+        meshR = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -19,16 +23,21 @@ public class VideoScreen : MonoBehaviour
     {
         
     }
-    void Interaction()
+    void Interaction(bool remoteActive)
     {
-        if (StarterAssets.StarterAssetsInputs.hasRemote)
+        if (remoteActive)
         {
-            choiceVideoMenu.SetActive(true);
-            Cursor.visible = true;
+            if (videoPlayer.clip)
+            {
+                videoPlayer.clip = null;
+            }
+            meshR.material = screenOn;
+            choiceVideoMenu.SetActive(!choiceVideoMenu.activeSelf);
         }
     }
     public void ChoiceVideo(int id)
     {
         videoPlayer.clip = videos[id];
+        choiceVideoMenu.SetActive(false);
     }
 }
